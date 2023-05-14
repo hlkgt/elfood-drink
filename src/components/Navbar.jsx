@@ -11,10 +11,11 @@ import {
   faArrowUp,
   faArrowDown,
   faLink,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navlink = (props) => {
-  const { text, translate, mode, active } = props;
+  const { text, translate, mode, active, children } = props;
   return (
     <Link
       {...props}
@@ -27,18 +28,19 @@ const Navlink = (props) => {
       }
     >
       {text}
+      {children}
     </Link>
   );
 };
 Navlink.propTypes = {
-  // linkNavigated: PropTypes.string,
   text: PropTypes.node,
   translate: PropTypes.string,
   mode: PropTypes.string,
-  active: PropTypes.string,
+  active: PropTypes.bool,
+  children: PropTypes.element,
 };
 
-const Navbar = () => {
+const Navbar = ({ isShopping = false, isShoppingNull = false }) => {
   const [isActive, setIsActive] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
 
@@ -74,7 +76,7 @@ const Navbar = () => {
             <div className={"hidden lg:flex gap-3"}>
               <Navlink to={"/"} text={"HOME"} mode={"desktop"} />
               <Navlink to={"/about"} text={"ABOUT"} mode={"desktop"} />
-              <Navlink text={"PRODUCT"} mode={"desktop"} />
+              <Navlink to={"/product"} text={"PRODUCT"} mode={"desktop"} />
               <Navlink text={"TESTIMONIAL"} mode={"desktop"} />
             </div>
           </div>
@@ -90,24 +92,39 @@ const Navbar = () => {
           to={"/"}
           text={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>}
           translate={isActive ? "-translate-y-20" : ""}
-          active={isActive.toString()}
+          active={isActive}
         />
         <Navlink
           to={"/about"}
           text={<FontAwesomeIcon icon={faLink}></FontAwesomeIcon>}
           translate={isActive ? "-translate-y-40" : ""}
-          active={isActive.toString()}
+          active={isActive}
         />
         <Navlink
+          to={"/product"}
           text={<FontAwesomeIcon icon={faBurger}></FontAwesomeIcon>}
           translate={isActive ? "-translate-y-60" : ""}
-          active={isActive.toString()}
+          active={isActive}
         />
         <Navlink
           text={<FontAwesomeIcon icon={faList}></FontAwesomeIcon>}
           translate={isActive ? "-translate-y-80" : ""}
-          active={isActive.toString()}
+          active={isActive}
         />
+        {isShopping && (
+          <Navlink
+            text={<FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>}
+            translate={isActive ? "-translate-y-[25rem] " : "-translate-y-20 "}
+            active={isActive}
+          >
+            <span
+              className={
+                (isShoppingNull ? "block" : "hidden") +
+                " w-4 h-4 bg-red-500 absolute top-0 right-0 rounded-full animate-pulse"
+              }
+            ></span>
+          </Navlink>
+        )}
         <Navlink
           text={
             <FontAwesomeIcon
@@ -115,7 +132,7 @@ const Navbar = () => {
             ></FontAwesomeIcon>
           }
           translate={isActive ? "-translate-x-20" : ""}
-          active={isActive.toString()}
+          active={isActive}
           onClick={
             isScroll
               ? () => {
@@ -137,6 +154,10 @@ const Navbar = () => {
       </div>
     </Fragment>
   );
+};
+Navbar.propTypes = {
+  isShopping: PropTypes.bool,
+  isShoppingNull: PropTypes.bool,
 };
 
 export default Navbar;
