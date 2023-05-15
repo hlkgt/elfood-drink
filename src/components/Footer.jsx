@@ -65,9 +65,9 @@ const Footer = () => {
           <h1 className={"text-3xl text-teal-400 font-bold mb-2"}>
             Menu Teratas
           </h1>
-          <li>Mie Goreng Rendah Lemak</li>
-          <li>Coffe Caramel No-sugar</li>
-          <li>Udang Panggang</li>
+          <li>Mie Goreng</li>
+          <li>Coffe Caramel</li>
+          <li>Udang BBQ</li>
         </div>
         <div className="col-span-1 p-4">
           <h1 className={"text-3xl text-teal-400 font-bold mb-2"}>

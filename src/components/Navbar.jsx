@@ -40,7 +40,7 @@ Navlink.propTypes = {
   children: PropTypes.element,
 };
 
-const Navbar = ({ isShopping = false, isShoppingNull = false }) => {
+const Navbar = ({ isShopping = false, isCartNull = false, showCart }) => {
   const [isActive, setIsActive] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
 
@@ -86,7 +86,6 @@ const Navbar = ({ isShopping = false, isShoppingNull = false }) => {
         className={
           "lg:hidden fixed bottom-10 right-4 w-16 h-16 rounded-full bg-teal-400 flex justify-center items-center pointer"
         }
-        onClick={() => setIsActive(!isActive)}
       >
         <Navlink
           to={"/"}
@@ -116,10 +115,11 @@ const Navbar = ({ isShopping = false, isShoppingNull = false }) => {
             text={<FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>}
             translate={isActive ? "-translate-y-[25rem] " : "-translate-y-20 "}
             active={isActive}
+            onClick={showCart}
           >
             <span
               className={
-                (isShoppingNull ? "block" : "hidden") +
+                (isCartNull ? "block" : "hidden") +
                 " w-4 h-4 bg-red-500 absolute top-0 right-0 rounded-full animate-pulse"
               }
             ></span>
@@ -149,7 +149,8 @@ const Navbar = ({ isShopping = false, isShoppingNull = false }) => {
               icon={isActive ? faXmark : faBars}
             ></FontAwesomeIcon>
           }
-          active={isActive.toString()}
+          onClick={() => setIsActive(!isActive)}
+          active={isActive}
         />
       </div>
     </Fragment>
@@ -157,7 +158,8 @@ const Navbar = ({ isShopping = false, isShoppingNull = false }) => {
 };
 Navbar.propTypes = {
   isShopping: PropTypes.bool,
-  isShoppingNull: PropTypes.bool,
+  isCartNull: PropTypes.bool,
+  showCart: PropTypes.func,
 };
 
 export default Navbar;
