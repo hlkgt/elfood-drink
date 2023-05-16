@@ -38,6 +38,21 @@ const Testimoni = () => {
           "container mx-auto px-8 pt-24 pb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
         }
       >
+        <div
+          className={
+            "col-span-1 md:col-span-2 lg:col-span-4 flex justify-center items-center flex-col mb-6"
+          }
+        >
+          <span className={"text-orange-400 text-lg font-bold"}>
+            --Ini Kata Mereka --
+          </span>
+          <h1 className={"text-center text-xl font-bold text-slate-600"}>
+            Testimoni
+          </h1>
+          <p className={"text-center text-md"}>
+            Beberapa Ulasan Dari Konsumen Yang Pernah Beli Dan Makan Disini
+          </p>
+        </div>
         <CardTestimoni />
         <CardTestimoni />
         <CardTestimoni />
