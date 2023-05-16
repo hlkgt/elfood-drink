@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { PropTypes } from "prop-types";
-import imageAbout from "../../public/hero-image.jpg";
+import imageAbout from "../assets/hero-image.jpg";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -61,8 +61,8 @@ const About = () => {
         }
       />
       <AboutContent
-        colFirstStart={"col-start-2"}
-        colLastStart={"col-start-1 row-start-1"}
+        colFirstStart={"lg:col-start-2"}
+        colLastStart={"lg:col-start-1 lg:row-start-1"}
         cardId={"null"}
         photo={imageAbout}
         slogan={"-- Mau Tau Kami --"}

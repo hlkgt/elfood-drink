@@ -1,4 +1,4 @@
-import imageUser from "../../public/hero-image.jpg";
+import imageUser from "../assets/hero-image.jpg";
 
 const CardMenuFavorit = () => {
   return (

@@ -21,7 +21,7 @@ const Navlink = (props) => {
       {...props}
       className={
         (mode === "desktop"
-          ? "py-1 px-4 rounded-full border-4 text-white bg-teal-400 font-medium hover:bg-white hover:text-teal-400 hover:border-teal-400"
+          ? "py-1 px-4 rounded-full border-4 text-white bg-teal-400 font-medium hover:bg-white hover:text-teal-400 hover:border-teal-400 capitalize"
           : "absolute w-16 h-16 rounded-full bg-teal-400 flex justify-center items-center pointer transition-transform ease-in-out duration-500 text-3xl text-white ") +
         translate +
         (active ? " rotate-360" : " rotate-0")
@@ -74,10 +74,27 @@ const Navbar = ({ isShopping = false, isCartNull = false, showCart }) => {
               elfooDrink
             </a>
             <div className={"hidden lg:flex gap-3"}>
-              <Navlink to={"/"} text={"HOME"} mode={"desktop"} />
-              <Navlink to={"/about"} text={"ABOUT"} mode={"desktop"} />
-              <Navlink to={"/product"} text={"PRODUCT"} mode={"desktop"} />
-              <Navlink text={"TESTIMONIAL"} mode={"desktop"} />
+              <Navlink to={"/"} text={"home"} mode={"desktop"} />
+              <Navlink to={"/about"} text={"about"} mode={"desktop"} />
+              <Navlink to={"/product"} text={"product"} mode={"desktop"} />
+              <Navlink text={"testimoni"} mode={"desktop"} />
+              {isShopping && (
+                <Navlink
+                  text={
+                    <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+                  }
+                  translate={"right-12 top-6 text-md w-4 h-4"}
+                  active={isActive}
+                  onClick={showCart}
+                >
+                  <span
+                    className={
+                      (isCartNull ? "block" : "hidden") +
+                      " w-2 h-2 bg-red-500 absolute -top-2 -right-3 rounded-full animate-pulse"
+                    }
+                  ></span>
+                </Navlink>
+              )}
             </div>
           </div>
         </div>
@@ -90,24 +107,24 @@ const Navbar = ({ isShopping = false, isCartNull = false, showCart }) => {
         <Navlink
           to={"/"}
           text={<FontAwesomeIcon icon={faHome}></FontAwesomeIcon>}
-          translate={isActive ? "-translate-y-20" : ""}
+          translate={isActive && "-translate-y-20"}
           active={isActive}
         />
         <Navlink
           to={"/about"}
           text={<FontAwesomeIcon icon={faLink}></FontAwesomeIcon>}
-          translate={isActive ? "-translate-y-40" : ""}
+          translate={isActive && "-translate-y-40"}
           active={isActive}
         />
         <Navlink
           to={"/product"}
           text={<FontAwesomeIcon icon={faBurger}></FontAwesomeIcon>}
-          translate={isActive ? "-translate-y-60" : ""}
+          translate={isActive && "-translate-y-60"}
           active={isActive}
         />
         <Navlink
           text={<FontAwesomeIcon icon={faList}></FontAwesomeIcon>}
-          translate={isActive ? "-translate-y-80" : ""}
+          translate={isActive && "-translate-y-80"}
           active={isActive}
         />
         {isShopping && (

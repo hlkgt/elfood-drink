@@ -1,4 +1,4 @@
-import imageHero from "../../public/hero-image.jpg";
+import imageHero from "../assets/hero-image.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
