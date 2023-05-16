@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import imageUser from "../assets/hero-image.jpg";
 
 const CardMenuFavorit = () => {
@@ -12,14 +13,14 @@ const CardMenuFavorit = () => {
         <div className="flex flex-col gap-2">
           <h1 className={"text-lg font-semibold"}>Kentang Goreng</h1>
           <span></span>
-          <a
-            href={"#"}
+          <Link
+            to={"/product"}
             className={
               "py-1 px-3 rounded-lg bg-orange-400 hover:bg-orange-600 transition-all duration-300 ease-in-out text-white mx-auto"
             }
           >
             Buy Now
-          </a>
+          </Link>
         </div>
       </div>
     </div>

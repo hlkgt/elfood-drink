@@ -10,7 +10,7 @@ const Hero = () => {
       }
       id={"top"}
     >
-      <div className={"grid grid-cols-1 lg:grid-cols-2 gap-8"}>
+      <div className={"py-12 grid grid-cols-1 lg:grid-cols-2 gap-8"}>
         <div className={"col-span-1 pt-4"}>
           <img
             src={imageHero}

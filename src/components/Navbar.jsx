@@ -77,7 +77,7 @@ const Navbar = ({ isShopping = false, isCartNull = false, showCart }) => {
               <Navlink to={"/"} text={"home"} mode={"desktop"} />
               <Navlink to={"/about"} text={"about"} mode={"desktop"} />
               <Navlink to={"/product"} text={"product"} mode={"desktop"} />
-              <Navlink text={"testimoni"} mode={"desktop"} />
+              <Navlink to={"/testimoni"} text={"testimoni"} mode={"desktop"} />
               {isShopping && (
                 <Navlink
                   text={
@@ -123,6 +123,7 @@ const Navbar = ({ isShopping = false, isCartNull = false, showCart }) => {
           active={isActive}
         />
         <Navlink
+          to={"/testimoni"}
           text={<FontAwesomeIcon icon={faList}></FontAwesomeIcon>}
           translate={isActive && "-translate-y-80"}
           active={isActive}
