@@ -301,50 +301,70 @@ const Product = () => {
           " fixed bg-white inset-x-0 inset-y-0 z-50 border-2 border-slate-300 transition-all duration-500 ease-in-out "
         }
       >
-        <div
-          className={
-            (cartProducts.length > 6 ? "grid-rows-none " : "grid-rows-6") +
-            "h-[43rem] md:h-[60rem] lg:h-[35rem] my-20 px-12 gap-8 overflow-y-scroll grid grid-cols-1"
-          }
-        >
-          {cartProducts.map((product, index) => {
-            return (
-              <div
-                key={index}
-                className={
-                  "col-span-1 row-span-1 lg:row-span-2 w-full py-2 flex justify-between items-center px-4 lg:border-4 lg:rounded-xl"
-                }
-              >
-                <div className={"flex gap-2"}>
-                  <img
-                    src={imageProduct}
-                    alt={"image-product"}
-                    className={"w-20 h-20 p-2 rounded-md"}
-                  />
-                  <div className={"flex flex-col"}>
-                    <h1>{product.nama}</h1>
-                    <p>Rp.{product.price}</p>
-                    <span>{product.rate}</span>
-                  </div>
-                </div>
-                <button
-                  className={" bg-red-500 text-white text-2xl p-4 rounded-xl"}
-                >
-                  <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-                </button>
-              </div>
-            );
-          })}
-          <span
+        {cartProducts > 0 ? (
+          <div
             className={
-              "fixed top-4 right-4 w-8 h-8 bg-white rounded-full border-slate-300 border-2 flex justify-center items-center text-lg"
+              (cartProducts.length > 6 ? "grid-rows-none " : "grid-rows-6") +
+              "h-[43rem] md:h-[60rem] lg:h-[35rem] my-20 px-12 gap-8 overflow-y-scroll grid grid-cols-1"
             }
-            onClick={showCart}
           >
-            <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
-          </span>
-          <button className={"fixed bottom-10 inset-x-12 py-4 rounded-xl bg-teal-400 text-2xl text-white font-medium"}>Buy Now</button>
-        </div>
+            {cartProducts.map((product, index) => {
+              return (
+                <div
+                  key={index}
+                  className={
+                    "col-span-1 row-span-1 lg:row-span-2 w-full py-2 flex justify-between items-center px-4 lg:border-4 lg:rounded-xl"
+                  }
+                >
+                  <div className={"flex gap-2"}>
+                    <img
+                      src={imageProduct}
+                      alt={"image-product"}
+                      className={"w-20 h-20 p-2 rounded-md"}
+                    />
+                    <div className={"flex flex-col"}>
+                      <h1>{product.nama}</h1>
+                      <p>Rp.{product.price}</p>
+                      <span>{product.rate}</span>
+                    </div>
+                  </div>
+                  <button
+                    className={" bg-red-500 text-white text-2xl p-4 rounded-xl"}
+                  >
+                    <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+                  </button>
+                </div>
+              );
+            })}
+            <span
+              className={
+                "fixed top-4 right-4 w-8 h-8 bg-white rounded-full border-slate-300 border-2 flex justify-center items-center text-lg"
+              }
+              onClick={showCart}
+            >
+              <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+            </span>
+            <button
+              className={
+                "fixed bottom-10 inset-x-12 py-4 rounded-xl bg-teal-400 text-2xl text-white font-medium"
+              }
+            >
+              Buy Now
+            </button>
+          </div>
+        ) : (
+          <div className={"flex justify-center items-center min-h-screen mx-auto px-8 text-center"}>
+            <h1 className={"text-2xl font-semibold"}>Belum Ada yang Dimasukkan Ke Keranjang</h1>
+            <span
+              className={
+                "fixed top-4 right-4 w-8 h-8 bg-white rounded-full border-slate-300 border-2 flex justify-center items-center text-lg"
+              }
+              onClick={showCart}
+            >
+              <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+            </span>
+          </div>
+        )}
       </div>
     </Fragment>
   );
