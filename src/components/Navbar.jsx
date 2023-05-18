@@ -83,7 +83,7 @@ const Navbar = ({ isShopping = false, isCartNull = false, showCart }) => {
                   text={
                     <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
                   }
-                  translate={"right-12 top-6 text-md w-4 h-4"}
+                  translate={"right-8 top-6 text-md w-4 h-4"}
                   active={isActive}
                   onClick={showCart}
                 >
