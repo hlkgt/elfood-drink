@@ -1,7 +1,9 @@
+import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import imageUser from "../assets/hero-image.jpg";
+import Rate from "./Rate";
 
-const CardMenuFavorit = () => {
+const CardMenuFavorit = ({ name, price, rate }) => {
   return (
     <div
       className={
@@ -11,8 +13,9 @@ const CardMenuFavorit = () => {
       <div className="flex justify-center items-center gap-4">
         <img src={imageUser} alt="image-user" className={"w-20"} />
         <div className="flex flex-col gap-2">
-          <h1 className={"text-lg font-semibold"}>Kentang Goreng</h1>
-          <span></span>
+          <h1 className={"text-lg font-semibold"}>{name}</h1>
+          <p>Rp.{price}</p>
+          <Rate rate={rate} />
           <Link
             to={"/product"}
             className={
@@ -25,6 +28,11 @@ const CardMenuFavorit = () => {
       </div>
     </div>
   );
+};
+CardMenuFavorit.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  rate: PropTypes.number.isRequired,
 };
 
 const MenuFavorit = () => {
@@ -46,17 +54,17 @@ const MenuFavorit = () => {
           </p>
         </div>
         <div className={"col-span-1"}>
-          <CardMenuFavorit />
+          <CardMenuFavorit name={"Nasi Goreng"} price={12000} rate={5} />
         </div>
         <div className={"col-span-1"}>
-          <CardMenuFavorit />
+          <CardMenuFavorit name={"Coffe Caramel"} price={7000} rate={5} />
         </div>
         <div
           className={
             "col-span-1  md:col-span-2 md:mx-auto lg:mx-0 lg:col-span-1"
           }
         >
-          <CardMenuFavorit />
+          <CardMenuFavorit name={"Udang BBQ"} price={8000} rate={5} />
         </div>
       </div>
     </div>

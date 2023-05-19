@@ -65,7 +65,7 @@ const Footer = () => {
           <h1 className={"text-3xl text-teal-400 font-bold mb-2"}>
             Menu Teratas
           </h1>
-          <li>Mie Goreng</li>
+          <li>Nasi Goreng</li>
           <li>Coffe Caramel</li>
           <li>Udang BBQ</li>
         </div>

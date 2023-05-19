@@ -5,6 +5,7 @@ import { faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import imageProduct from "../assets/hero-image.jpg";
+import Rate from "../components/Rate";
 
 const CardProduct = ({ title, children }) => {
   return (
@@ -39,7 +40,7 @@ const ProductList = ({ name, price, rate, children }) => {
         <div>
           <h1 className={"text-lg font-semibold"}>{name}</h1>
           <p className={"text-md font-medium"}>Rp.{price}</p>
-          <span>{rate}</span>
+          <Rate rate={rate} />
         </div>
       </div>
       {children}
@@ -48,8 +49,8 @@ const ProductList = ({ name, price, rate, children }) => {
 };
 ProductList.propTypes = {
   name: PropTypes.string,
-  price: PropTypes.int,
-  rate: PropTypes.int,
+  price: PropTypes.number,
+  rate: PropTypes.number,
   children: PropTypes.node,
 };
 
@@ -353,8 +354,14 @@ const Product = () => {
             </button>
           </div>
         ) : (
-          <div className={"flex justify-center items-center min-h-screen mx-auto px-8 text-center"}>
-            <h1 className={"text-2xl font-semibold"}>Belum Ada yang Dimasukkan Ke Keranjang</h1>
+          <div
+            className={
+              "flex justify-center items-center min-h-screen mx-auto px-8 text-center"
+            }
+          >
+            <h1 className={"text-2xl font-semibold"}>
+              Belum Ada yang Dimasukkan Ke Keranjang
+            </h1>
             <span
               className={
                 "fixed top-4 right-4 w-8 h-8 bg-white rounded-full border-slate-300 border-2 flex justify-center items-center text-lg"
