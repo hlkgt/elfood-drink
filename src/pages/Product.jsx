@@ -66,44 +66,58 @@ const Product = () => {
     return setIsShowCart(!isShowCart);
   };
 
+  const removeCartProducts = (objectId) => {
+    setCartProducts((prevData) =>
+      prevData.filter((obj) => obj.id !== objectId)
+    );
+  };
+
   const products = {
     makanan: [
       {
+        id: 1,
         nama: "Nasi Goreng",
         price: 15000,
         rate: 5,
       },
       {
+        id: 2,
         nama: "Mie Goreng",
         price: 12000,
         rate: 4,
       },
       {
+        id: 3,
         nama: "Seblak",
         price: 7000,
         rate: 3,
       },
       {
+        id: 4,
         nama: "Mie Kuah",
         price: 12000,
         rate: 4,
       },
       {
+        id: 5,
         nama: "Ayam Bakar",
         price: 10000,
         rate: 4,
       },
       {
+        id: 6,
         nama: "Sate Ayam",
         price: 20000,
         rate: 4,
       },
       {
+        id: 7,
         nama: "Rica Ayam",
         price: 20000,
         rate: 4,
       },
       {
+        id: 8,
         nama: "Rica Bebek",
         price: 20000,
         rate: 4,
@@ -111,41 +125,49 @@ const Product = () => {
     ],
     minuman: [
       {
+        id: 9,
         nama: "Apple Tea",
         price: 4000,
         rate: 3,
       },
       {
+        id: 10,
         nama: "Lemon Tea",
         price: 4000,
         rate: 3,
       },
       {
+        id: 11,
         nama: "White Coffe",
         price: 4000,
         rate: 3,
       },
       {
+        id: 12,
         nama: "Apple Tea",
         price: 4000,
         rate: 3,
       },
       {
+        id: 13,
         nama: "Coffe Caramel",
         price: 7000,
         rate: 5,
       },
       {
+        id: 14,
         nama: "Taro Green Tea",
         price: 5000,
         rate: 4,
       },
       {
+        id: 15,
         nama: "Mangga Tea",
         price: 5000,
         rate: 3,
       },
       {
+        id: 16,
         nama: "Oreo Red Velvet",
         price: 6000,
         rate: 3,
@@ -153,41 +175,49 @@ const Product = () => {
     ],
     snack: [
       {
+        id: 17,
         nama: "Udang BBQ",
         price: "8000",
         rate: 5,
       },
       {
+        id: 18,
         nama: "Udang Keju",
         price: "8000",
         rate: 4,
       },
       {
+        id: 19,
         nama: "Rambut Nenek",
         price: "8000",
         rate: 3,
       },
       {
+        id: 20,
         nama: "Kentang Goreng",
         price: "8000",
         rate: 4,
       },
       {
+        id: 21,
         nama: "Ayam Chicken",
         price: "8000",
         rate: 3,
       },
       {
+        id: 22,
         nama: "Siomay Bakar",
         price: "8000",
         rate: 3,
       },
       {
+        id: 23,
         nama: "Sate Usus",
         price: "8000",
         rate: 3,
       },
       {
+        id: 24,
         nama: "Bakpao",
         price: "8000",
         rate: 3,
@@ -244,7 +274,7 @@ const Product = () => {
                   name={product.nama}
                   price={product.price}
                   rate={product.rate}
-                  key={index}
+                  key={index + 10}
                 >
                   <button
                     className={
@@ -272,7 +302,7 @@ const Product = () => {
                   name={product.nama}
                   price={product.price}
                   rate={product.rate}
-                  key={index}
+                  key={index + 30}
                 >
                   <button
                     className={
@@ -302,7 +332,7 @@ const Product = () => {
           " fixed bg-white inset-x-0 inset-y-0 z-50 border-2 border-slate-300 transition-all duration-500 ease-in-out "
         }
       >
-        {cartProducts > 0 ? (
+        {cartProducts.length > 0 ? (
           <div
             className={
               (cartProducts.length > 6 ? "grid-rows-none " : "grid-rows-6") +
@@ -312,7 +342,7 @@ const Product = () => {
             {cartProducts.map((product, index) => {
               return (
                 <div
-                  key={index}
+                  key={index + 90}
                   className={
                     "col-span-1 row-span-1 lg:row-span-2 w-full py-2 flex justify-between items-center px-4 lg:border-4 lg:rounded-xl"
                   }
@@ -332,7 +362,10 @@ const Product = () => {
                   <button
                     className={" bg-red-500 text-white text-2xl p-4 rounded-xl"}
                   >
-                    <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      onClick={() => removeCartProducts(product.id)}
+                    ></FontAwesomeIcon>
                   </button>
                 </div>
               );
